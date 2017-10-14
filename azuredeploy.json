@@ -1,0 +1,71 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "image": {
+            "type": "string",
+            "defaultValue": "neo4j",
+            "allowedValues": [
+                "neo4j", 
+                "ryguyrg/neo4j-panama-papers"
+            ]
+        },
+        "container": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().name]"
+        },
+        "password": {
+            "type": "securestring"
+        }
+    },
+    "resources": [{
+        "name": "[parameters('container')]",
+        "type": "Microsoft.ContainerInstance/containerGroups",
+        "apiVersion": "2017-10-01-preview",
+        "location": "[resourceGroup().location]",
+        "properties": {
+            "containers": [{
+                "name": "[parameters('container')]",
+                "properties": {
+                    "image": "[parameters('image')]",
+                    "resources": {
+                        "requests": {
+                            "cpu": 1,
+                            "memoryInGb": 3
+                        }
+                    },
+                    "environmentVariables": [{
+                        "name": "NEO4J_AUTH",
+                        "value": "[concat('neo4j/', parameters('password'))]"
+                    }],
+                    "ports": [{
+                            "port": 7474
+                        },
+                        {
+                            "port": 7687
+                        }
+                    ]
+                }
+            }],
+            "osType": "Linux",
+            "ipAddress": {
+                "type": "Public",
+                "ports": [{
+                        "protocol": "tcp",
+                        "port": "7474"
+                    },
+                    {
+                        "protocol": "tcp",
+                        "port": "7687"
+                    }
+                ]
+            }
+        }
+    }],
+    "outputs": {
+        "ipAddress": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups', parameters('container'))).ipAddress.ip]"
+        }
+    }
+}
