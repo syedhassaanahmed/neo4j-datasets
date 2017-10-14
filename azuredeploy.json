@@ -11,8 +11,7 @@
             ]
         },
         "container": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().name]"
+            "type": "string"
         },
         "password": {
             "type": "securestring"
