@@ -15,6 +15,18 @@
         },
         "password": {
             "type": "securestring"
+        },
+        "cpu": {
+            "type": "int",
+            "defaultValue": 2,
+            "minValue": 1,
+            "maxValue": 2
+        },
+        "memoryInGb": {
+            "type": "int",
+            "defaultValue": 7,
+            "minValue": 1,
+            "maxValue": 7
         }
     },
     "resources": [{
@@ -29,8 +41,8 @@
                     "image": "[parameters('image')]",
                     "resources": {
                         "requests": {
-                            "cpu": 1,
-                            "memoryInGb": 3
+                            "cpu": "[parameters('cpu')]",
+                            "memoryInGb": "[parameters('memoryInGb')]"
                         }
                     },
                     "environmentVariables": [{
