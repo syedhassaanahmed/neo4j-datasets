@@ -38,7 +38,7 @@
                         "value": "[concat('neo4j/', parameters('password'))]"
                     }],
                     "ports": [{
-                            "port": 7474
+                            "port": 7473
                         },
                         {
                             "port": 7687
@@ -51,7 +51,7 @@
                 "type": "Public",
                 "ports": [{
                         "protocol": "tcp",
-                        "port": "7474"
+                        "port": "7473"
                     },
                     {
                         "protocol": "tcp",
