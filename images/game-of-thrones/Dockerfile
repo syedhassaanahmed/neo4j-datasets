@@ -10,7 +10,7 @@ RUN wget https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/downloa
 RUN wget https://raw.githubusercontent.com/neo4j-examples/game-of-thrones/master/got-import.cypher &&\
     bin/neo4j-admin set-initial-password gotneo4j && \
     bin/neo4j start && \
-    sleep 20 &&\
+    sleep 15 &&\
     bin/cypher-shell -u neo4j -p gotneo4j < got-import.cypher &&\
     bin/neo4j stop &&\
     rm -rf data/dbms/
