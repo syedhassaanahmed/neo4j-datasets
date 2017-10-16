@@ -7,7 +7,8 @@
             "defaultValue": "neo4j",
             "allowedValues": [
                 "neo4j", 
-                "ryguyrg/neo4j-panama-papers"
+                "ryguyrg/neo4j-panama-papers",
+                "syedhassaanahmed/neo4j-game-of-thrones"
             ]
         },
         "container": {
