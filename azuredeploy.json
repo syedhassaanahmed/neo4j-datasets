@@ -11,10 +11,10 @@
                 "syedhassaanahmed/neo4j-game-of-thrones"
             ]
         },
-        "container": {
+        "containerName": {
             "type": "string"
         },
-        "password": {
+        "neo4jPassword": {
             "type": "securestring"
         },
         "cpu": {
@@ -31,13 +31,13 @@
         }
     },
     "resources": [{
-        "name": "[parameters('container')]",
+        "name": "[parameters('containerName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
         "apiVersion": "2017-10-01-preview",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [{
-                "name": "[parameters('container')]",
+                "name": "[parameters('containerName')]",
                 "properties": {
                     "image": "[parameters('image')]",
                     "resources": {
@@ -48,7 +48,7 @@
                     },
                     "environmentVariables": [{
                         "name": "NEO4J_AUTH",
-                        "value": "[concat('neo4j/', parameters('password'))]"
+                        "value": "[concat('neo4j/', parameters('neo4jPassword'))]"
                     }],
                     "ports": [{
                             "port": 7473
@@ -77,7 +77,7 @@
     "outputs": {
         "ipAddress": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups', parameters('container'))).ipAddress.ip]"
+            "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups', parameters('containerName'))).ipAddress.ip]"
         }
     }
 }
