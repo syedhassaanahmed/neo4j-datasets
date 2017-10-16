@@ -8,6 +8,7 @@
             "allowedValues": [
                 "neo4j", 
                 "ryguyrg/neo4j-panama-papers",
+                "syedhassaanahmed/neo4j-inside-airbnb",
                 "syedhassaanahmed/neo4j-game-of-thrones"
             ]
         },
