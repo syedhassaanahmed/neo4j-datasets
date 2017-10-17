@@ -6,7 +6,7 @@
             "type": "string",
             "defaultValue": "neo4j",
             "allowedValues": [
-                "neo4j", 
+                "neo4j",
                 "ryguyrg/neo4j-panama-papers",
                 "syedhassaanahmed/neo4j-inside-airbnb",
                 "syedhassaanahmed/neo4j-game-of-thrones"
@@ -27,9 +27,12 @@
         "memoryInGb": {
             "type": "int",
             "defaultValue": 7,
-            "minValue": 1,
+            "minValue": 2,
             "maxValue": 7
         }
+    },
+    "variables": {
+        "neo4jMemoryInMb": "[mul(sub(parameters('memoryInGb'), 1), 512)]"
     },
     "resources": [{
         "name": "[parameters('containerName')]",
@@ -50,6 +53,12 @@
                     "environmentVariables": [{
                         "name": "NEO4J_AUTH",
                         "value": "[concat('neo4j/', parameters('neo4jPassword'))]"
+                    }, {
+                        "name": "NEO4J_dbms_memory_pagecache_size",
+                        "value": "[concat(variables('neo4jMemoryInMb'), 'M')]"
+                    }, {
+                        "name": "NEO4J_dbms_memory_heap_maxSize",
+                        "value": "[concat(variables('neo4jMemoryInMb'), 'M')]"
                     }],
                     "ports": [{
                             "port": 7473
