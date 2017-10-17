@@ -32,7 +32,7 @@
         }
     },
     "variables": {
-        "neo4jMemoryInMb": "[concat(mul(sub(parameters('memoryInGb'), 1), 512), 'M')]"
+        "neo4jMemoryInMb": "[mul(sub(parameters('memoryInGb'), 1), 512)]"
     },
     "resources": [{
         "name": "[parameters('containerName')]",
