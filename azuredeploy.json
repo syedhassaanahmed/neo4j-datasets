@@ -32,7 +32,7 @@
         }
     },
     "variables": {
-        "neo4jMemoryInMb": "[mul(sub(parameters('memoryInGb'), 1), 512)]"
+        "neo4jMemoryInMb": "[concat(mul(sub(parameters('memoryInGb'), 1), 512), 'M')]"
     },
     "resources": [{
         "name": "[parameters('containerName')]",
@@ -55,10 +55,10 @@
                         "value": "[concat('neo4j/', parameters('neo4jPassword'))]"
                     }, {
                         "name": "NEO4J_dbms_memory_pagecache_size",
-                        "value": "[concat(variables('neo4jMemoryInMb'), 'M')]"
+                        "value": "[variables('neo4jMemoryInMb')]"
                     }, {
                         "name": "NEO4J_dbms_memory_heap_maxSize",
-                        "value": "[concat(variables('neo4jMemoryInMb'), 'M')]"
+                        "value": "[variables('neo4jMemoryInMb')]"
                     }],
                     "ports": [{
                             "port": 7473
