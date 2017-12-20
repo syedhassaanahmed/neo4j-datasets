@@ -29,18 +29,18 @@
         },
         "cpu": {
             "type": "int",
-            "defaultValue": 2,
+            "defaultValue": 4,
             "minValue": 1,
-            "maxValue": 2,
+            "maxValue": 4,
             "metadata": {
                 "description": "Number of CPU cores"
             }
         },
         "memoryInGb": {
             "type": "int",
-            "defaultValue": 7,
+            "defaultValue": 14,
             "minValue": 2,
-            "maxValue": 7,
+            "maxValue": 14,
             "metadata": {
                 "description": "Memory size in GB"
             }
