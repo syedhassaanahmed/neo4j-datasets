@@ -14,13 +14,13 @@ Install the [latest Azure CLI](https://docs.microsoft.com/en-us/cli/azure/instal
 
 Since actual data is downloaded when container starts, it may take a while before Neo4j Bolt server is established. To check that, run this in Azure CLI
 ```
-az container logs -g <RESOURCE_GROUP> -n <CONTAINER NAME>
+az container logs -g <RESOURCE_GROUP> -n <CONTAINER_NAME>
 ```
 
 If you've forgotten your credentials, run this and it will spit out a json containing the environment variable `NEO4J_AUTH`.
 
 ```
-az container show -g <RESOURCE_GROUP> -n <CONTAINER NAME>
+az container show -g <RESOURCE_GROUP> -n <CONTAINER_NAME>
 ```
 
 [Here is a detailed guide](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting) for troubleshooting Azure Container Instances.
