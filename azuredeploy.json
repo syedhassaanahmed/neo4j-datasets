@@ -8,8 +8,10 @@
             "allowedValues": [
                 "neo4j",
                 "ryguyrg/neo4j-panama-papers",
+                "ryguyrg/neo4j-paradise-papers",
+                "syedhassaanahmed/neo4j-game-of-thrones",
                 "syedhassaanahmed/neo4j-inside-airbnb",
-                "syedhassaanahmed/neo4j-game-of-thrones"
+                "syedhassaanahmed/neo4j-stackexchange"
             ],
             "metadata": {
                 "description": "Neo4j based Docker image"
