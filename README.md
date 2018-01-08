@@ -1,7 +1,7 @@
 # aci-deploy-neo4j
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
-Deploy single instance `Neo4j` server with optional publicly available datasets on `Azure Container Instances`. [These are the Neo4j-based docker images](https://github.com/syedhassaanahmed/aci-deploy-neo4j/blob/master/azuredeploy.json#L8) currently supported.
+Deploy single instance `Neo4j` server with optional publicly available datasets on `Azure Container Instances`. [These are the Neo4j-based docker images](https://github.com/syedhassaanahmed/aci-deploy-neo4j/blob/master/azuredeploy.json#L8) currently supported. The project is described in detail in [this blog post](https://medium.com/@hasssaaannn/bringing-public-neo4j-graph-datasets-to-azure-cfc77f02bcbe).
 
 Based on [official performance tuning guidelines](https://neo4j.com/developer/guide-performance-tuning/), Neo4j server is configured with the following value for `dbms.memory.pagecache.size` and `dbms.memory.heap.maxSize`
 > `(CONTAINER_MEMORY_IN_GB - 1GB) / 2` (1GB reserved for other activities on server) i.e for a 7GB container, page cache size and heap size will have 3GB each.
