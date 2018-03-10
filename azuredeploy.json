@@ -27,12 +27,6 @@
                 "description": "Neo4j based Docker image"
             }
         },
-        "containerName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the container group and container"
-            }
-        },
         "neo4jPassword": {
             "type": "securestring",
             "metadata": {
@@ -56,65 +50,103 @@
             "metadata": {
                 "description": "Memory size in GB"
             }
+        },
+        "migrateToCosmosDb": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Flag if Cosmos DB should be created and neo2cosmos started"
+            }
         }
     },
     "variables": {
-        "neo4jMemoryInMb": "[mul(sub(parameters('memoryInGb'), 1), 512)]"
+        "containerId": "[resourceId('Microsoft.ContainerInstance/containerGroups', variables('graphDbName'))]",
+        "graphDbName": "[split(last(split(parameters('image'), '/')), ':')[0]]",
+        "neo4jMemoryInMb": "[mul(sub(parameters('memoryInGb'), 1), 512)]",
+        "neo4jPorts": [
+            {
+                "port": 7473
+            },
+            {
+                "port": 7687
+            }
+        ]
     },
-    "resources": [{
-        "name": "[parameters('containerName')]",
-        "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2017-10-01-preview",
-        "location": "[resourceGroup().location]",
-        "properties": {
-            "containers": [{
-                "name": "[parameters('containerName')]",
-                "properties": {
-                    "image": "[parameters('image')]",
-                    "resources": {
-                        "requests": {
-                            "cpu": "[parameters('cpu')]",
-                            "memoryInGb": "[parameters('memoryInGb')]"
-                        }
-                    },
-                    "environmentVariables": [{
-                        "name": "NEO4J_AUTH",
-                        "value": "[concat('neo4j/', parameters('neo4jPassword'))]"
-                    }, {
-                        "name": "NEO4J_dbms_memory_pagecache_size",
-                        "value": "[concat(variables('neo4jMemoryInMb'), 'M')]"
-                    }, {
-                        "name": "NEO4J_dbms_memory_heap_maxSize",
-                        "value": "[variables('neo4jMemoryInMb')]"
-                    }],
-                    "ports": [{
-                            "port": 7473
-                        },
-                        {
-                            "port": 7687
-                        }
-                    ]
-                }
-            }],
-            "osType": "Linux",
-            "ipAddress": {
-                "type": "Public",
-                "ports": [{
-                        "protocol": "tcp",
-                        "port": "7473"
-                    },
+    "resources": [
+        {
+            "name": "[variables('graphDbName')]",
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2018-02-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "containers": [
                     {
-                        "protocol": "tcp",
-                        "port": "7687"
+                        "name": "[variables('graphDbName')]",
+                        "properties": {
+                            "image": "[parameters('image')]",
+                            "resources": {
+                                "requests": {
+                                    "cpu": "[parameters('cpu')]",
+                                    "memoryInGb": "[parameters('memoryInGb')]"
+                                }
+                            },
+                            "environmentVariables": [
+                                {
+                                    "name": "NEO4J_AUTH",
+                                    "value": "[concat('neo4j/', parameters('neo4jPassword'))]"
+                                },
+                                {
+                                    "name": "NEO4J_dbms_memory_pagecache_size",
+                                    "value": "[concat(variables('neo4jMemoryInMb'), 'M')]"
+                                },
+                                {
+                                    "name": "NEO4J_dbms_memory_heap_maxSize",
+                                    "value": "[variables('neo4jMemoryInMb')]"
+                                }
+                            ],
+                            "ports": "[variables('neo4jPorts')]"
+                        }
                     }
-                ]
+                ],
+                "osType": "Linux",
+                "ipAddress": {
+                    "type": "Public",
+                    "ports": "[variables('neo4jPorts')]"
+                }
+            }
+        },
+        {
+            "name": "neo2cosmos",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "condition": "[equals(parameters('migrateToCosmosDb'), bool('true'))]",
+            "dependsOn": [
+                "[variables('containerId')]"
+            ],            
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/syedhassaanahmed/neo-to-cosmos/master/azuredeploy.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "cosmosDbCollection": {
+                        "value": "[variables('graphDbName')]"
+                    },
+                    "neo4jBolt": {
+                        "value": "[concat('bolt://', reference(variables('containerId')).ipAddress.ip, ':7687')]"
+                    },
+                    "neo4jPassword": {
+                        "value": "[parameters('neo4jPassword')]"
+                    }
+                }
             }
         }
-    }],
+    ],
     "outputs": {
         "ipAddress": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups', parameters('containerName'))).ipAddress.ip]"
+            "value": "[reference(variables('containerId')).ipAddress.ip]"
         }
     }
 }
