@@ -55,7 +55,7 @@
             "type": "bool",
             "defaultValue": false,
             "metadata": {
-                "description": "Flag if Cosmos DB should be created and neo2cosmos started. String datatype is used otherwise validation in 'Deploy to Azure' UI fails."
+                "description": "Flag if Cosmos DB should be created and neo2cosmos started."
             }
         }
     },
