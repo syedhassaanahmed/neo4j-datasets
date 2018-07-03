@@ -118,7 +118,7 @@
         {
             "name": "neo2cosmos",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2017-05-10",
+            "apiVersion": "2018-02-01",
             "condition": "[equals(bool(parameters('migrateToCosmosDb')), bool('true'))]",
             "dependsOn": [
                 "[variables('containerId')]"
