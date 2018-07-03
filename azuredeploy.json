@@ -76,7 +76,7 @@
         {
             "name": "[variables('graphDbName')]",
             "type": "Microsoft.ContainerInstance/containerGroups",
-            "apiVersion": "2018-02-01-preview",
+            "apiVersion": "2018-06-01",
             "location": "[resourceGroup().location]",
             "properties": {
                 "containers": [
@@ -118,7 +118,7 @@
         {
             "name": "neo2cosmos",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2017-05-10",
+            "apiVersion": "2018-02-01",
             "condition": "[equals(bool(parameters('migrateToCosmosDb')), bool('true'))]",
             "dependsOn": [
                 "[variables('containerId')]"
