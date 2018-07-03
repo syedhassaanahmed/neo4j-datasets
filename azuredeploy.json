@@ -52,8 +52,8 @@
             }
         },
         "migrateToCosmosDb": {
-            "type": "string",
-            "defaultValue": "false",
+            "type": "bool",
+            "defaultValue": false,
             "metadata": {
                 "description": "Flag if Cosmos DB should be created and neo2cosmos started. String datatype is used otherwise validation in 'Deploy to Azure' UI fails."
             }
@@ -119,7 +119,7 @@
             "name": "neo2cosmos",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2018-02-01",
-            "condition": "[equals(bool(parameters('migrateToCosmosDb')), bool('true'))]",
+            "condition": "[equals(parameters('migrateToCosmosDb'), bool('true'))]",
             "dependsOn": [
                 "[variables('containerId')]"
             ],            
