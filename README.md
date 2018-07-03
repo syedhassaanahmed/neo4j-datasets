@@ -1,5 +1,5 @@
 # aci-deploy-neo4j
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsyedhassaanahmed%2Faci-deploy-neo4j%2Fmaster%2Fazuredeploy.json)
 
 Deploy single instance `Neo4j` server with optional publicly available datasets on `Azure Container Instances`. [These are the Neo4j-based docker images](https://github.com/syedhassaanahmed/aci-deploy-neo4j/blob/master/azuredeploy.json#L8) currently supported. The project is described in detail in [this blog post](https://medium.com/@hasssaaannn/bringing-public-neo4j-graph-datasets-to-azure-cfc77f02bcbe).
 
