@@ -28,7 +28,12 @@ while read -r url ; do
         echo "Unzipped csv data > ${FILE_LIMIT_MB}M, skipping..."
     else
         # wait for server to kick in (only first time)
-        ./neo4j-wait.sh
+        NEO4J_END="$((SECONDS+10))"
+        while true; do
+            [[ "200" = "$(curl --silent --write-out %{http_code} --output /dev/null http://localhost:7474)" ]] && break
+            [[ "${SECONDS}" -ge "${NEO4J_END}" ]] && exit 1
+            sleep 1
+        done
 
         # import city data
         bin/cypher-shell -u neo4j -p $TEMP_PASSWORD < import.cypher
