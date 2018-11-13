@@ -8,8 +8,7 @@ curl -O -L $SE_ARCHIVE_7Z_URL
 for i in *.7z; do 7za -y -oextracted x $i; done
 python3 to_csv.py extracted
 
-../bin/neo4j-import\
-    --into ../data/databases/graph.db \
+../bin/neo4j-admin import\
     --id-type string \
     --nodes:Post csvs/posts.csv \
     --nodes:User csvs/users.csv \
