@@ -1,7 +1,7 @@
 # neo4j-datasets
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsyedhassaanahmed%2Fneo4j-datasets%2Fmaster%2Fazuredeploy.json)
 
-Deploy single instance `Neo4j` server with optional publicly available datasets on `Azure Container Instances`. [These are the Neo4j-based docker images](https://github.com/syedhassaanahmed/neo4j-datasets/blob/master/azuredeploy.json#L8) currently supported. The project is described in detail in [this blog post](https://medium.com/@hasssaaannn/bringing-public-neo4j-graph-datasets-to-azure-cfc77f02bcbe).
+Deploy single instance `Neo4j` server with optional publicly available datasets on `Azure Container Instances`. [These are the supported docker images](https://github.com/syedhassaanahmed/neo4j-datasets/blob/master/azuredeploy.json#L8) currently supported. The project is described in detail in [this blog post](https://medium.com/@hasssaaannn/bringing-public-neo4j-graph-datasets-to-azure-cfc77f02bcbe).
 
 To deploy the template using CLI;
 ```
@@ -15,7 +15,7 @@ Based on [official performance tuning guidelines](https://neo4j.com/developer/gu
 Once deployment is completed, proceed to the newly created `Container group` and select `Overview` to get Public IP. Launch web browser at `https://<PUBLIC_IP>:7473` (ignore certificate warnings). Login with credentials `neo4j/<NEO4J_PASSWORD>`
 
 ## Migrate to Cosmos DB
-The template also allows you to optionally migrate data to Cosmos DB using [Neo2Cosmos](https://github.com/syedhassaanahmed/neo-to-cosmos) tool. 
+The template also allows you to optionally migrate data to Cosmos DB using [neo-to-cosmos](https://github.com/syedhassaanahmed/neo-to-cosmos) tool. 
 
 **Note:** This will additionally deploy Cosmos DB, Redis Cache and 3 Azure Container Instances of `Neo2Cosmos`.
 
