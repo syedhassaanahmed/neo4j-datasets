@@ -21,7 +21,8 @@
                 "syedhassaanahmed/neo4j-northwind",
                 "syedhassaanahmed/neo4j-reddit-memes",
                 "syedhassaanahmed/neo4j-shodan-iot",
-                "syedhassaanahmed/neo4j-stackexchange"
+                "syedhassaanahmed/neo4j-stackexchange",
+                "syedhassaanahmed/neo4j-worldcup"
             ],
             "metadata": {
                 "description": "Neo4j based Docker image"
@@ -55,7 +56,7 @@
             "type": "string",
             "defaultValue": "false",
             "metadata": {
-                "description": "Flag if Cosmos DB should be created and neo2cosmos started. String datatype is used otherwise validation in 'Deploy to Azure' UI fails."
+                "description": "Flag if Cosmos DB should be created and neo-to-cosmos started. String datatype is used otherwise validation in 'Deploy to Azure' UI fails."
             }
         }
     },
@@ -116,7 +117,7 @@
             }
         },
         {
-            "name": "neo2cosmos",
+            "name": "neo-to-cosmos",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2018-02-01",
             "condition": "[equals(bool(parameters('migrateToCosmosDb')), bool('true'))]",

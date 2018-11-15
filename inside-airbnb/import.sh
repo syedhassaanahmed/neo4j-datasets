@@ -41,4 +41,4 @@ while read -r url ; do
 done
 
 # copy databases to root so that we can put them in final container during the build pipeline
-cp -r /var/lib/neo4j/data/databases /
+cp -r data/databases /
