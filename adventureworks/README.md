@@ -1,5 +1,5 @@
 # adventureworks
-[![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-adventureworks.svg)](https://hub.docker.com/r/syedhassaanahmed/neo4j-adventureworks/)
+[![Docker Build Status](https://img.shields.io/docker/build/syedhassaanahmed/neo4j-adventureworks.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-adventureworks/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-adventureworks.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-adventureworks/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-adventureworks.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-adventureworks/)
 
 Docker image hosting Neo4j Database of the popular [AdventureWorks SQL Database](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks).
 

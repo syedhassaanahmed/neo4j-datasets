@@ -1,5 +1,5 @@
 # stackexchange
-[![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-stackexchange.svg)](https://hub.docker.com/r/syedhassaanahmed/neo4j-stackexchange/)
+[![Docker Build Status](https://img.shields.io/docker/build/syedhassaanahmed/neo4j-stackexchange.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-stackexchange/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-stackexchange.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-stackexchange/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-stackexchange.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-stackexchange/)
 
 Docker image hosting Neo4j Database of [StackExchange sites](https://stackexchange.com/sites). Since data volume is large, site selection is dictated by environment variable `SE_ARCHIVE_7Z_URL`. URL can be retrieved from [this anonymized dump](https://archive.org/details/stackexchange) of Stack Exchange network. Default url points to the archive of `windowsphone.stackexchange.com` (yes I love beating dead horses :)).
 
