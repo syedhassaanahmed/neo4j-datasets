@@ -27,11 +27,11 @@ while read -r url ; do
     if [[ $(find import -type f -size +${ALLOWED_SIZE}c) ]]; then 
         echo "Unzipped csv data > ${FILE_LIMIT_MB}M, skipping..."
     else
-        # wait for server to kick in (only first time)
-        NEO4J_END="$((SECONDS+10))"
+        # wait for server to kick in
+        NEO4J_END="$((SECONDS+20))"
         while true; do
             [[ "200" = "$(curl --silent --write-out %{http_code} --output /dev/null http://localhost:7474)" ]] && break
-            [[ "${SECONDS}" -ge "${NEO4J_END}" ]] && exit 1
+            [[ "${SECONDS}" -ge "${NEO4J_END}" ]] && echo "Neo4j server took too long to start" && exit 1
             sleep 1
         done
 
