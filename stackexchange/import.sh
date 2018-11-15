@@ -17,5 +17,5 @@ python3 to_csv.py extracted
     --relationships:HAS_TAG csvs/tags_posts_rel.csv \
     --relationships:POSTED csvs/users_posts_rel.csv
 
-cd /var/lib/neo4j
-/docker-entrypoint.sh neo4j
+# copy databases to root so that we can put them in final container during the build pipeline
+cp -r /var/lib/neo4j/data/databases /

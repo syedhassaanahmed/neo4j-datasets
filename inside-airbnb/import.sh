@@ -40,11 +40,5 @@ while read -r url ; do
     fi
 done
 
-# stop server
-bin/neo4j stop
-
-# clear temp password
-rm -rf data/dbms/
-
-# now start for real!
-/docker-entrypoint.sh neo4j
+# copy databases to root so that we can put them in final container during the build pipeline
+cp -r /var/lib/neo4j/data/databases /

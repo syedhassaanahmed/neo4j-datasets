@@ -23,8 +23,5 @@ done
 # import data
 bin/cypher-shell -u neo4j -p $TEMP_PASSWORD < import.cypher
 
-# stop server and clean temp password
-bin/neo4j stop && rm -rf data/dbms/
-
-# now start for real!
-/docker-entrypoint.sh neo4j
+# copy databases to root so that we can put them in final container during the build pipeline
+cp -r /var/lib/neo4j/data/databases /
