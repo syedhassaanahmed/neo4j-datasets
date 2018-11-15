@@ -28,7 +28,7 @@ while read -r url ; do
         echo "Unzipped csv data > ${FILE_LIMIT_MB}M, skipping..."
     else
         # wait for server to kick in
-        NEO4J_END="$((SECONDS+60))"
+        NEO4J_END="$((SECONDS+300))"
         while true; do
             [[ "200" = "$(curl --silent --write-out %{http_code} --output /dev/null http://localhost:7474)" ]] && break
             [[ "${SECONDS}" -ge "${NEO4J_END}" ]] && echo "Neo4j server took too long to start" && exit 1
