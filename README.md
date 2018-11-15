@@ -17,7 +17,7 @@ Once deployment is completed, proceed to the newly created `Container group` and
 ## Migrate to Cosmos DB
 The template also allows you to optionally migrate data to Cosmos DB using [neo-to-cosmos](https://github.com/syedhassaanahmed/neo-to-cosmos) tool. 
 
-**Note:** This will additionally deploy Cosmos DB, Redis Cache and 3 Azure Container Instances of `Neo2Cosmos`.
+**Note:** This will additionally deploy Cosmos DB, Redis Cache and 3 Azure Container Instances of `neo-to-cosmos`.
 
 ## Troubleshoot
 Install the [latest Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
