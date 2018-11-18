@@ -1,7 +1,7 @@
 # neo4j-datasets
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsyedhassaanahmed%2Fneo4j-datasets%2Fmaster%2Fazuredeploy.json)
 
-Deploy single instance `Neo4j` server with optional publicly available datasets on `Azure Container Instances`. [These are the supported docker images](https://github.com/syedhassaanahmed/neo4j-datasets/blob/master/azuredeploy.json#L8) currently supported. The project is described in detail in [this blog post](https://medium.com/@hasssaaannn/bringing-public-neo4j-graph-datasets-to-azure-cfc77f02bcbe).
+Deploy single instance `Neo4j` server with optional publicly available datasets on `Azure Container Instances`. [These are the docker images](https://github.com/syedhassaanahmed/neo4j-datasets/blob/master/azuredeploy.json#L8) currently supported. The project is described in detail in [this blog post](https://medium.com/@hasssaaannn/bringing-public-neo4j-graph-datasets-to-azure-cfc77f02bcbe).
 
 To deploy the template using CLI;
 ```
@@ -14,27 +14,22 @@ Based on [official performance tuning guidelines](https://neo4j.com/developer/gu
 ## Browse data
 Once deployment is completed, proceed to the newly created `Container group` and select `Overview` to get Public IP. Launch web browser at `https://<PUBLIC_IP>:7473` (ignore certificate warnings). Login with credentials `neo4j/<NEO4J_PASSWORD>`
 
-## Migrate to Cosmos DB
+## Migrate to Azure Cosmos DB
 The template also allows you to optionally migrate data to Cosmos DB using [neo-to-cosmos](https://github.com/syedhassaanahmed/neo-to-cosmos) tool. 
 
-**Note:** This will additionally deploy Cosmos DB, Redis Cache and 3 Azure Container Instances of `neo-to-cosmos`.
+**Note:** This will additionally deploy Cosmos DB and an Azure Container Instance of `neo-to-cosmos`.
 
 ## Troubleshoot
-Install the [latest Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+Install the [latest Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Since actual data is downloaded when container starts, it may take a while before Neo4j Bolt server is established. To check that, run this to get logs in Azure CLI
-```
-az container logs -g <RESOURCE_GROUP> -n <CONTAINER_NAME>
-```
-Or Attach to the container
-```
-az container attach -g <RESOURCE_GROUP> -n <CONTAINER_NAME>
-```
-
-If you've forgotten your credentials, run this and it will spit out a json containing the environment variable `NEO4J_AUTH`.
+If you've forgotten your Neo4j credentials, here is how to retrieve it from the secure environment variable `NEO4J_AUTH`.
 
 ```
-az container show -g <RESOURCE_GROUP> -n <CONTAINER_NAME>
+az container exec -g <RESOURCE_GROUP> -n <CONTAINER_NAME> --exec-command "/bin/bash"
+```
+Once inside the bash shell, execute;
+```
+echo $NEO4J_AUTH
 ```
 
 [Here is a detailed guide](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting) for troubleshooting Azure Container Instances.
