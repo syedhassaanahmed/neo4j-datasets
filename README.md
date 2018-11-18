@@ -5,7 +5,12 @@ Deploy single instance `Neo4j` server with optional publicly available datasets 
 
 To deploy the template using CLI;
 ```
-az group deployment create -g neo4j-game-of-thrones --template-file azuredeploy.json --parameters image=syedhassaanahmed/neo4j-game-of-thrones neo4jPassword=<NEO4J_PASSWORD> migrateToCosmosDb=true
+az group deployment create -g neo4j-game-of-thrones \
+    --template-file azuredeploy.json \
+    --parameters 
+        image=syedhassaanahmed/neo4j-game-of-thrones \
+        neo4jPassword=<NEO4J_PASSWORD> \
+        migrateToCosmosDb=true
 ```
 
 Based on [official performance tuning guidelines](https://neo4j.com/developer/guide-performance-tuning/), Neo4j server is configured with the following value for `dbms.memory.pagecache.size` and `dbms.memory.heap.maxSize`
@@ -22,7 +27,7 @@ The template also allows you to optionally migrate data to Cosmos DB using [neo-
 ## Troubleshoot
 Install the [latest Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-If you've forgotten your Neo4j credentials, here is how to retrieve it from the secure environment variable `NEO4J_AUTH`.
+If you've forgotten your Neo4j credentials, here is how to retrieve them from the [secure environment variable](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-environment-variables#secure-values) `NEO4J_AUTH`.
 
 ```
 az container exec -g <RESOURCE_GROUP> -n <CONTAINER_NAME> --exec-command "/bin/bash"
