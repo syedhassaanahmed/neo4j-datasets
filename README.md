@@ -7,7 +7,7 @@ To deploy the template using CLI;
 ```
 az group deployment create -g neo4j-game-of-thrones \
     --template-file azuredeploy.json \
-    --parameters 
+    --parameters \
         image=syedhassaanahmed/neo4j-game-of-thrones \
         neo4jPassword=<NEO4J_PASSWORD> \
         migrateToCosmosDb=true
