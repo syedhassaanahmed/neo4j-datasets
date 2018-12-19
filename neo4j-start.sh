@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd /var/lib/neo4j
-
 # set temp password
 export NEO4J_USERNAME=neo4j
 export NEO4J_PASSWORD=temp-neo4j-password
