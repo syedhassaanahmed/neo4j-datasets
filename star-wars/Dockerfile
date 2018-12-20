@@ -1,10 +1,14 @@
 FROM neo4j AS build
-COPY import.sh swapi.py ./
-RUN apk add --update curl && \
-    apk add --no-cache python3 && \
+ENV NEO4J_USERNAME=neo4j
+ENV NEO4J_PASSWORD=temp-neo4j-password
+ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/syedhassaanahmed/neo4j-datasets/master/neo4j-start.sh ./
+COPY swapi.py ./
+RUN apk add --no-cache curl python3 && \
     python3 -m ensurepip && \
     pip3 install py2neo requests && \
-    chmod +x *.sh && ./import.sh
+    chmod +x *.sh && ./neo4j-start.sh && \
+    python3 swapi.py && \
+    cp -r data/databases /
 
 FROM neo4j AS final
 LABEL maintainer="Syed Hassaan Ahmed"

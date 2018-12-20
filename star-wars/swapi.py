@@ -2,7 +2,7 @@ from py2neo import Graph
 import requests
 import os
 
-graph = Graph("bolt://localhost:7687", auth=("neo4j", os.environ["TEMP_PASSWORD"]))
+graph = Graph("bolt://localhost:7687", auth=(os.environ["NEO4J_USERNAME"], os.environ["NEO4J_PASSWORD"]))
 
 graph.run("CREATE CONSTRAINT ON (f:Film) ASSERT f.url IS UNIQUE")
 graph.run("CREATE CONSTRAINT ON (p:Person) ASSERT p.url IS UNIQUE")

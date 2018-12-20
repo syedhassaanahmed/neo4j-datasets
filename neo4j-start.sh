@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # set temp password
-export NEO4J_USERNAME=neo4j
-export NEO4J_PASSWORD=temp-neo4j-password
 bin/neo4j-admin set-initial-password $NEO4J_PASSWORD
 
 # allow all APOC procedures to be available to all users

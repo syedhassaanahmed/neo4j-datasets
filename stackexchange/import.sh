@@ -16,6 +16,3 @@ python3 to_csv.py extracted
     --relationships:PARENT_OF csvs/posts_rel.csv \
     --relationships:HAS_TAG csvs/tags_posts_rel.csv \
     --relationships:POSTED csvs/users_posts_rel.csv
-
-# copy databases to root so that we can put them in final container during the build pipeline
-cp -r ../data/databases /
