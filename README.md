@@ -30,11 +30,7 @@ Install the [latest Azure CLI](https://docs.microsoft.com/en-us/cli/azure/instal
 If you've forgotten your Neo4j credentials, here is how to retrieve them from the [secure environment variable](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-environment-variables#secure-values) `NEO4J_AUTH`.
 
 ```
-az container exec -g <RESOURCE_GROUP> -n <CONTAINER_NAME> --exec-command "/bin/bash"
-```
-Once inside the bash shell, execute;
-```
-echo $NEO4J_AUTH
+az container exec -g <RESOURCE_GROUP> -n <CONTAINER_NAME> --exec-command "echo $NEO4J_AUTH"
 ```
 
 [Here is a detailed guide](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-troubleshooting) for troubleshooting Azure Container Instances.
