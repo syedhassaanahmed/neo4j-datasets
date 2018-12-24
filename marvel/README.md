@@ -5,4 +5,4 @@ Docker image hosting Neo4j Database of [Marvel Universe Social Network](https://
 
 ## Credits
 - **Claudio Sanhueza** for publishing this dataset on Kaggle.
-- **Tomaž Bratanič** for his [Cypher queries](https://tbgraph.wordpress.com/2017/06/10/neo4j-marvel-social-graph/) to analyze Marvel social graph.
+- **Tomaž Bratanič** for his detailed blog post [Marvel Social Graph](https://tbgraph.wordpress.com/2017/06/10/neo4j-marvel-social-graph/).
