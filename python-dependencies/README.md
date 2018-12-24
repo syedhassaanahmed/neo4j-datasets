@@ -4,4 +4,4 @@
 Docker image hosting Neo4j Database of dependency graph of libraries in the Python ecosytem.
 
 ## Credits
-- **Mark Needham** for his blog post [Analysing Python Dependency Graph with PageRank, Closeness Centrality, and Betweenness Centrality](https://markhneedham.com/blog/2018/07/16/quick-graph-python-dependency-graph/).
+- **Mark Needham** for his detailed blog post [Analysing Python Dependency Graph with PageRank, Closeness Centrality, and Betweenness Centrality](https://markhneedham.com/blog/2018/07/16/quick-graph-python-dependency-graph/).

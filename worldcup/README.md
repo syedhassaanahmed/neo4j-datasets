@@ -4,4 +4,4 @@
 Docker image hosting Neo4j Database of all the World Cup tournaments from 1930 to 2018.
 
 ## Credits
-- **Mark Needham** for his series of blogposts on [World Cup Fun with Neo4j](http://worldcup.neo4j.org/) and providing a [GitHub repo](https://github.com/mneedham/neo4j-worldcup) for loading data.
+- **Mark Needham** for his series of blog posts on [World Cup Fun with Neo4j](http://worldcup.neo4j.org/) and providing a [GitHub repo](https://github.com/mneedham/neo4j-worldcup) for loading data.

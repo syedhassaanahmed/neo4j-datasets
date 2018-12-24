@@ -4,4 +4,4 @@
 Docker image hosting Neo4j Database of [ThoughtWorks Technology Radar](https://www.thoughtworks.com/radar/a-z). The Radar documents currently interesting motions in software development by ThoughtWorks' senior technologists.
 
 ## Credits
-- **Mark Needham** for his detailed blogpost [Graphing the ThoughtWorks Technology Radar](https://markhneedham.com/blog/2016/12/23/neo4j-graphing-the-thoughtworks-technology-radar/)
+- **Mark Needham** for his detailed blog post [Graphing the ThoughtWorks Technology Radar](https://markhneedham.com/blog/2016/12/23/neo4j-graphing-the-thoughtworks-technology-radar/)
