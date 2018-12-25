@@ -3,7 +3,7 @@
 # set temp password
 bin/neo4j-admin set-initial-password $NEO4J_PASSWORD
 
-# allow APOC procedures and Graph Algorithm to be executed without restrictions
+# allow APOC procedures and Graph Algorithms to be executed without restrictions
 echo "dbms.security.procedures.unrestricted=apoc.*,algo.*" >> conf/neo4j.conf
 
 # start server

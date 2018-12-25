@@ -5,4 +5,4 @@ Docker image hosting Neo4j Database of US legislative data for [Congress 114](ht
 
 ## Credits
 - **Joshua Tauberer** for creating and maintaining GovTrack.
-- **William Lyon** for his detailed blog post on [legis-graph](http://www.lyonwj.com/2015/09/20/legis-graph-congressional-data-using-neo4j/).
+- **William Lyon** for his detailed blog post [US Congressional Data With Govtrack](http://www.lyonwj.com/2015/09/20/legis-graph-congressional-data-using-neo4j/).

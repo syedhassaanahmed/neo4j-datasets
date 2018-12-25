@@ -30,5 +30,5 @@ MERGE (rating:Rating{name:row.`Hospital overall rating`})
 MERGE (h)-[:HAS_RATING]->(rating);
 
 LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/tomasonjo/hospitals-neo4j/master/gpsinfo.csv" as row
-MATCH (hospital:Hospital {id:row.id})
-SET hospital.latitude = row.latitude, hospital.longitude = row.longitude;
+MATCH (h:Hospital{id:row.id})
+SET h.longitude = toFloat(row.longitude),h.latitude=toFloat(row.latitude)

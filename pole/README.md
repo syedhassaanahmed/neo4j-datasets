@@ -4,4 +4,4 @@
 Docker image hosting Neo4j Database of POLE. POLE stands for People, Objects, Locations and Events and are a type of databases typically used in police/intelligence use cases.
 
 ## Credits
-- **J. Barrasa** for publishing the [POLE dataset](https://github.com/jbarrasa/datasets/tree/master/safeguarding) and the descriptive [guide](http://guides.neo4j.com/field/pole.html).
+- **Jesús Barrasa** for publishing the [POLE dataset](https://github.com/jbarrasa/datasets/tree/master/safeguarding) and the descriptive [guide](http://guides.neo4j.com/field/pole.html).

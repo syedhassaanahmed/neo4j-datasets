@@ -4,4 +4,4 @@
 Docker image hosting Neo4j Database of football player transfers from [transfermarkt](https://www.transfermarkt.co.uk/).
 
 ## Credits
-- **Mark Needham** for providing the [scraped data](https://github.com/mneedham/football-transfers/tree/master/import) and [Cypher import queries](https://github.com/mneedham/football-transfers/tree/master/cypher).
+- **Mark Needham** for his detailed blog post [The football transfers graph](https://markhneedham.com/blog/2015/07/16/neo4j-the-football-transfers-graph/).
