@@ -1,0 +1,11 @@
+pool:
+  vmImage: 'ubuntu-16.04'
+
+steps:
+  - task: ShellScript@2
+    displayName: 'Run Docker build script'
+    inputs:
+      scriptPath: 'docker-build.sh'
+    env:
+      DOCKER_ID: $(DOCKER_ID)
+      DOCKER_PASSWORD: $(DOCKER_PASSWORD)
