@@ -1,4 +1,6 @@
 # neo4j-datasets
+[![Build Status](https://dev.azure.com/syedhassaanahmed/neo4j-datasets/_apis/build/status/neo4j-datasets-CI?branchName=master)](https://dev.azure.com/syedhassaanahmed/neo4j-datasets/_build/latest?definitionId=10?branchName=master)
+
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsyedhassaanahmed%2Fneo4j-datasets%2Fmaster%2Fazuredeploy.json)
 
 Deploy single instance `Neo4j` server with optional publicly available datasets on `Azure Container Instances`. [These are the docker images](https://github.com/syedhassaanahmed/neo4j-datasets/blob/master/azuredeploy.json#L8) currently supported. The project is described in detail in [this blog post](https://medium.com/@hasssaaannn/bringing-public-neo4j-graph-datasets-to-azure-cfc77f02bcbe).

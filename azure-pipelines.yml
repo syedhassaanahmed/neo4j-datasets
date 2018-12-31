@@ -3,7 +3,7 @@ pool:
 
 steps:
   - task: ShellScript@2
-    displayName: 'Run Docker build script'
+    displayName: 'Build Docker images'
     inputs:
       scriptPath: 'docker-build.sh'
     env:
