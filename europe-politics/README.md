@@ -1,5 +1,5 @@
 # europe-politics
-[![Docker Build Status](https://img.shields.io/docker/build/syedhassaanahmed/neo4j-europe-politics.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-europe-politics/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-europe-politics.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-europe-politics/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-europe-politics.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-europe-politics/)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/syedhassaanahmed/neo4j-europe-politics.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-europe-politics/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-europe-politics.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-europe-politics/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-europe-politics.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-europe-politics/)
 
 Docker image hosting Neo4j Database of European politics from [DBpedia](https://wiki.dbpedia.org/).
 

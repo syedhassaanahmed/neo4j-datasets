@@ -1,5 +1,5 @@
 # london-tube
-[![Docker Build Status](https://img.shields.io/docker/build/syedhassaanahmed/neo4j-london-tube.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-london-tube/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-london-tube.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-london-tube/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-london-tube.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-london-tube/)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/syedhassaanahmed/neo4j-london-tube.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-london-tube/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-london-tube.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-london-tube/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-london-tube.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-london-tube/)
 
 Docker image hosting Neo4j Database of [London Tube](https://tfl.gov.uk/modes/tube/) stations and their connections.
 

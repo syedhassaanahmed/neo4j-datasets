@@ -1,5 +1,5 @@
 # game-of-thrones
-[![Docker Build Status](https://img.shields.io/docker/build/syedhassaanahmed/neo4j-game-of-thrones.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-game-of-thrones/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-game-of-thrones.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-game-of-thrones/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-game-of-thrones.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-game-of-thrones/)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/syedhassaanahmed/neo4j-game-of-thrones.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-game-of-thrones/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-game-of-thrones.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-game-of-thrones/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-game-of-thrones.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-game-of-thrones/)
 
 Docker image hosting Neo4j Database of Game of Thrones.
 

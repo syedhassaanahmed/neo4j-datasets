@@ -1,5 +1,5 @@
 # asoiaf
-[![Docker Build Status](https://img.shields.io/docker/build/syedhassaanahmed/neo4j-asoiaf.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-asoiaf/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-asoiaf.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-asoiaf/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-asoiaf.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-asoiaf/)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/syedhassaanahmed/neo4j-asoiaf.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-asoiaf/builds/) [![MicroBadger Size](https://img.shields.io/microbadger/image-size/syedhassaanahmed/neo4j-asoiaf.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-asoiaf/tags/) [![Docker Pulls](https://img.shields.io/docker/pulls/syedhassaanahmed/neo4j-asoiaf.svg?logo=docker)](https://hub.docker.com/r/syedhassaanahmed/neo4j-asoiaf/)
 
 Docker image hosting Neo4j Database of character interaction networks from George R. R. Martin's [A Song of Ice and Fire](https://awoiaf.westeros.org/index.php/A_Song_of_Ice_and_Fire).
 
