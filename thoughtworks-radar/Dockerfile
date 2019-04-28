@@ -5,6 +5,7 @@ ADD https://www.thoughtworks.com/radar/a-z rawData/twRadar.html
 RUN apk add --no-cache git && \
     go get golang.org/x/text/encoding && \
     go get golang.org/x/crypto/ssh/terminal && \
+    go get golang.org/x/sync/errgroup && \
     go get -v ./... && \
     mkdir rawData/items import && \
     go run -v main.go
