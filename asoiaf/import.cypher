@@ -14,9 +14,9 @@ CALL algo.pageRank.stream(
  'MATCH (p:Person) WHERE (p)-[:INTERACTS_' + sequence + ']-() RETURN id(p) as id',
  'MATCH (p1:Person)-[INTERACTS_' + sequence + ']-(p2:Person) RETURN id(p1) as source,id(p2) as target',
  {graph:'cypher'})
-YIELD node,score
+YIELD nodeId,score
 // filter out nodes with default pagerank 
 // for nodes with no incoming rels
-WITH node,score,book where score > 0.16
+WITH nodeId,score,book where score > 0.16
 MERGE (node)<-[p:PAGERANK]-(book)
 SET p.score = score;
