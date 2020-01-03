@@ -6,7 +6,9 @@ ENV NEO4J_PASSWORD=temp-neo4j-password
 ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/syedhassaanahmed/neo4j-datasets/master/neo4j-start.sh ./
 ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/johnymontana/neo4j-datasets/master/airbnb/src/import/import.cypher ./
 COPY import.sh ./
-RUN chmod +x *.sh && ./neo4j-start.sh && \
+RUN apt-get update && \
+    apt-get install -y curl && \
+    chmod +x *.sh && ./neo4j-start.sh && \
     ./import.sh && \
     cp -r data/databases/graph.db /
 

@@ -3,7 +3,7 @@ ENV NEO4J_USERNAME=neo4j
 ENV NEO4J_PASSWORD=temp-neo4j-password
 ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/syedhassaanahmed/neo4j-datasets/master/neo4j-start.sh ./
 RUN apt-get update && \
-    apt-get install -y git && \
+    apt-get install -y curl git && \
     git clone https://github.com/syedhassaanahmed/neo4j-himym.git && \
     mv ./neo4j-himym/data/import/*.csv ./import/ && \
     echo "dbms.memory.heap.max_size=1G" >> conf/neo4j.conf && \

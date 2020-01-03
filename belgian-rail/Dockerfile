@@ -5,7 +5,7 @@ ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/syedhassaanahmed/neo4j
 ADD --chown=neo4j:neo4j https://www.dropbox.com/s/2ti020s19zb1hb8/nmbs.zip?dl=1 ./
 COPY import.cypher ./
 RUN apt-get update && \
-    apt-get install -y unzip && \
+    apt-get install -y curl unzip && \
     mkdir import/nmbs && unzip nmbs.zip -d import/nmbs && \
     chmod +x *.sh && ./neo4j-start.sh && \
     bin/cypher-shell < import.cypher && \

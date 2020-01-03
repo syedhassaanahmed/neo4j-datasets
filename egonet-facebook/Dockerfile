@@ -4,7 +4,9 @@ ENV NEO4J_PASSWORD=temp-neo4j-password
 ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/syedhassaanahmed/neo4j-datasets/master/neo4j-start.sh ./
 ADD --chown=neo4j:neo4j https://snap.stanford.edu/data/facebook_combined.txt.gz ./
 COPY import.cypher ./
-RUN chmod +x *.sh && ./neo4j-start.sh && \
+RUN apt-get update && \
+    apt-get install -y curl && \
+    chmod +x *.sh && ./neo4j-start.sh && \
     gunzip -c facebook_combined.txt.gz > ./import/facebook_combined.txt && \
     bin/cypher-shell < import.cypher && \
     cp -r data/databases/graph.db /

@@ -3,7 +3,7 @@ ENV NEO4J_USERNAME=neo4j
 ENV NEO4J_PASSWORD=temp-neo4j-password
 ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/syedhassaanahmed/neo4j-datasets/master/neo4j-start.sh ./
 RUN apt-get update && \
-    apt-get install -y git && \
+    apt-get install -y curl git && \
     git clone https://github.com/sfrechette/adventureworks-neo4j.git && \
     mv ./adventureworks-neo4j/data/ ./import/data/ && \
     chmod +x *.sh && ./neo4j-start.sh && \

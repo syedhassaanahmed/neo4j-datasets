@@ -4,7 +4,7 @@ ENV NEO4J_PASSWORD=temp-neo4j-password
 ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/syedhassaanahmed/neo4j-datasets/master/neo4j-start.sh ./
 ADD --chown=neo4j:neo4j https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.5.0.6/apoc-3.5.0.6-all.jar ./plugins
 RUN apt-get update && \
-    apt-get install -y git && \
+    apt-get install -y curl git && \
     git clone https://github.com/mneedham/football-transfers.git && \
     mv ./football-transfers/import/*.csv ./import/ && \
     chmod +x *.sh && ./neo4j-start.sh && \

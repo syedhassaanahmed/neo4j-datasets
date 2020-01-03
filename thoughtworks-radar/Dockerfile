@@ -17,7 +17,9 @@ ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/syedhassaanahmed/neo4j
 ADD --chown=neo4j:neo4j https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.5.0.6/apoc-3.5.0.6-all.jar ./plugins
 ADD --chown=neo4j:neo4j https://raw.githubusercontent.com/syedhassaanahmed/neo4j-thoughtworks-radar/master/import.cypher ./
 COPY --from=scrape /go/import/*.csv ./import/
-RUN chmod +x *.sh && ./neo4j-start.sh && \
+RUN apt-get update && \
+    apt-get install -y curl && \
+    chmod +x *.sh && ./neo4j-start.sh && \
     bin/cypher-shell < import.cypher && \
     cp -r data/databases/graph.db /
 

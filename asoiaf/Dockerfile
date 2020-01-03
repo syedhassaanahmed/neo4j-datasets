@@ -6,7 +6,9 @@ ADD --chown=neo4j:neo4j https://github.com/neo4j-contrib/neo4j-apoc-procedures/r
 ADD --chown=neo4j:neo4j https://github.com/neo4j-contrib/neo4j-graph-algorithms/releases/download/3.5.4.0/graph-algorithms-algo-3.5.4.0.jar ./plugins
 
 COPY import.cypher ./
-RUN chmod +x *.sh && ./neo4j-start.sh && \
+RUN apt-get update && \
+    apt-get install -y curl && \
+    chmod +x *.sh && ./neo4j-start.sh && \
     bin/cypher-shell < import.cypher && \
     cp -r data/databases/graph.db /
 
