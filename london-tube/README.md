@@ -5,4 +5,4 @@ Docker image hosting Neo4j Database of [London Tube](https://tfl.gov.uk/modes/tu
 
 ## Credits
 - **Nicola Greco** for developing the [Tubemaps](https://github.com/nicola/tubemaps) Node.js library and publishing the London tube dataset.
-- **Tomaž Bratanič** for his detailed blog post [London tube system analysis](https://tbgraph.wordpress.com/2017/08/31/neo4j-london-tube-system-analysis/).
+- **Tomaž Bratanič** for his detailed blog posts [London tube system analysis](https://tbgraph.wordpress.com/2017/08/31/neo4j-london-tube-system-analysis/) and [Depth-first search analysis on London Tube network](https://tbgraph.wordpress.com/2019/04/30/depth-first-search-analysis-on-london-tube-network-with-neo4j-graph-algorithms/).
