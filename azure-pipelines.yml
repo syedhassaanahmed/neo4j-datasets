@@ -1,5 +1,17 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - /
+    exclude:
+    - /README.md
+    - /azuredeploy.json
+
 pool:
-  vmImage: 'ubuntu-18.04'
+  vmImage: 'ubuntu-latest'
 
 steps:
   - task: ShellScript@2
