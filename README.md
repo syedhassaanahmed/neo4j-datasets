@@ -1,5 +1,5 @@
 # neo4j-datasets
-[![Build Status](https://dev.azure.com/syedhassaanahmed/neo4j-datasets/_apis/build/status/neo4j-datasets-CI?branchName=master)](https://dev.azure.com/syedhassaanahmed/neo4j-datasets/_build/latest?definitionId=10?branchName=master)
+[![Build Status](https://dev.azure.com/syedhassaanahmed/neo4j-datasets/_apis/build/status/neo4j-datasets-CI?branchName=master)](https://dev.azure.com/syedhassaanahmed/neo4j-datasets/_build/latest?definitionId=10&branchName=master)
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsyedhassaanahmed%2Fneo4j-datasets%2Fmaster%2Fazuredeploy.json)
 
