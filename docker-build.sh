@@ -28,12 +28,16 @@ for f in *; do
 
         docker rm -f $f
 
+        # Remove dangling images to save space on the build agent
+        docker rmi -f $(docker images -f "dangling=true" -q)
+
         if [ "$NODES" -lt 1 ] || [ "$RELATIONSHIPS" -lt 1 ]; then
             exit 1
         fi
 
         docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
         docker push $IMAGE_NAME
+
         cd ..
     fi
 done
