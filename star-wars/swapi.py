@@ -167,7 +167,7 @@ MERGE (c:VehicleClass {type: $vehicle_class})
 MERGE (v)-[:IS_CLASS]->(c)
 '''
 
-for i in range(1,6):
+for i in range(1,7):
     url = "https://swapi.dev/api/films/" + str(i) + "/"
     r = requests.get(url)
     params = r.json()
