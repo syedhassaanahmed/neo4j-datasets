@@ -47,5 +47,5 @@ MERGE (s)-[:IN_CITY]-(c)
 WITH *
 MATCH (p:Product {sku: row.sku})
 MERGE (p)-[r:INVENTORY]->(s)
-SET r.count = toInt(row.number)
+SET r.count = toInteger(row.number)
 RETURN *;

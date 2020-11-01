@@ -9,10 +9,10 @@ for i in *.7z; do 7za -y -oextracted x $i; done
 python3 to_csv.py extracted
 
 ../bin/neo4j-admin import\
-    --id-type string \
-    --nodes:Post csvs/posts.csv \
-    --nodes:User csvs/users.csv \
-    --nodes:Tag csvs/tags.csv \
-    --relationships:PARENT_OF csvs/posts_rel.csv \
-    --relationships:HAS_TAG csvs/tags_posts_rel.csv \
-    --relationships:POSTED csvs/users_posts_rel.csv
+    --id-type=STRING \
+    --nodes=Post="csvs/posts.csv" \
+    --nodes=User="csvs/users.csv" \
+    --nodes=Tag="csvs/tags.csv" \
+    --relationships=PARENT_OF="csvs/posts_rel.csv" \
+    --relationships=HAS_TAG="csvs/tags_posts_rel.csv" \
+    --relationships=POSTED="csvs/users_posts_rel.csv"

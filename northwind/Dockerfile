@@ -9,8 +9,10 @@ RUN apt-get update && \
     mv ./developer-resources/data/northwind/*.csv ./import && \
     chmod +x *.sh && ./neo4j-start.sh && \
     bin/cypher-shell < import.cypher && \
-    cp -r data/databases/graph.db /
+    cp -r data/databases/neo4j /databases_tmp && \
+    cp -r data/transactions/neo4j /transactions_tmp
 
 FROM neo4j AS final
 LABEL maintainer="Syed Hassaan Ahmed"
-COPY --chown=neo4j:neo4j --from=build /graph.db/ /data/databases/graph.db
+COPY --chown=neo4j:neo4j --from=build /databases_tmp/ /data/databases/neo4j
+COPY --chown=neo4j:neo4j --from=build /transactions_tmp/ /data/transactions/neo4j

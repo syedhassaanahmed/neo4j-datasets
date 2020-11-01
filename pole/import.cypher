@@ -44,7 +44,7 @@ MERGE (p1)-[:KNOWS]-(p2)
 USING PERIODIC COMMIT
 LOAD CSV FROM "https://raw.githubusercontent.com/jbarrasa/datasets/master/safeguarding/SOCIAL_WORKER_REPORT_EVENTS.csv" AS row
 MATCH (p:Person {nhs_no: row[0]})
-CREATE (e:Event:SocialWorkerReportedEvent { event_category: row[4], event_desc:row[3], event_date:row[1], event_risk_score:toInt(row[2])})
+CREATE (e:Event:SocialWorkerReportedEvent { event_category: row[4], event_desc:row[3], event_date:row[1], event_risk_score:toInteger(row[2])})
 CREATE (p)<-[:REPORTED_EVENT]-(e)
 
 // Load police reports

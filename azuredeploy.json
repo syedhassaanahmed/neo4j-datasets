@@ -11,9 +11,7 @@
                 "ryguyrg/neo4j-paradise-papers",
                 "syedhassaanahmed/neo4j-adventureworks",
                 "syedhassaanahmed/neo4j-air-routes",
-                "syedhassaanahmed/neo4j-asoiaf",
                 "syedhassaanahmed/neo4j-azure-services",
-                "syedhassaanahmed/neo4j-bbc-champions-league",
                 "syedhassaanahmed/neo4j-belgian-rail",
                 "syedhassaanahmed/neo4j-boston-meetup",
                 "syedhassaanahmed/neo4j-brexit",
@@ -24,7 +22,6 @@
                 "syedhassaanahmed/neo4j-football-transfers",
                 "syedhassaanahmed/neo4j-game-of-thrones",
                 "syedhassaanahmed/neo4j-goodreads",
-                "syedhassaanahmed/neo4j-himym",
                 "syedhassaanahmed/neo4j-inside-airbnb",
                 "syedhassaanahmed/neo4j-legis-graph",
                 "syedhassaanahmed/neo4j-london-tube",
@@ -32,14 +29,12 @@
                 "syedhassaanahmed/neo4j-medicare",
                 "syedhassaanahmed/neo4j-northwind",
                 "syedhassaanahmed/neo4j-pole",
-                "syedhassaanahmed/neo4j-prisoner-of-zenda",
                 "syedhassaanahmed/neo4j-python-dependencies",
                 "syedhassaanahmed/neo4j-reddit-memes",
                 "syedhassaanahmed/neo4j-retail-recommendations",
                 "syedhassaanahmed/neo4j-stackexchange",
                 "syedhassaanahmed/neo4j-star-wars",
-                "syedhassaanahmed/neo4j-thoughtworks-radar",
-                "syedhassaanahmed/neo4j-worldcup"
+                "syedhassaanahmed/neo4j-thoughtworks-radar"
             ],
             "metadata": {
                 "description": "Neo4j based Docker image"

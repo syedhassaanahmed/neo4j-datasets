@@ -1,17 +1,17 @@
 #!/bin/bash
 set -euo pipefail
 
-NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=Neo4j
 NEO4J_PORT=7474
 
 for f in *; do
-    if [ -d ${f} ]; then
-        cd $f
-        IMAGE_NAME=$DOCKER_ID/neo4j-$f
-        docker build -t $IMAGE_NAME .
+    IMAGE_NAME=$DOCKER_ID/neo4j-$f
+    IMAGE_ID=$(docker images $IMAGE_NAME --format "{{.ID}}")
 
-        docker run --name $f -d -p $NEO4J_PORT:$NEO4J_PORT -e "NEO4J_AUTH=$NEO4J_USERNAME/$NEO4J_PASSWORD" $IMAGE_NAME
+    if [ -d ${f} ] && [ -z "$IMAGE_ID" ]; then
+        cd $f
+
+        docker build -t $IMAGE_NAME .
+        docker run --name $f -d -p $NEO4J_PORT:$NEO4J_PORT -e "NEO4J_AUTH=none" $IMAGE_NAME
 
         NEO4J_END="$((SECONDS+300))"
         while true; do
@@ -20,18 +20,15 @@ for f in *; do
             sleep 1
         done
 
-        NODES=$(docker exec $f bin/cypher-shell -u $NEO4J_USERNAME -p $NEO4J_PASSWORD "MATCH (n) RETURN COUNT(n)" | tail -1)
-        RELATIONSHIPS=$(docker exec $f bin/cypher-shell -u $NEO4J_USERNAME -p $NEO4J_PASSWORD "MATCH ()-[r]->() RETURN COUNT(r)" | tail -1)
+        NODES=$(docker exec $f bin/cypher-shell "MATCH (n) RETURN COUNT(n)" | tail -1)
+        echo "$f has $NODES nodes"
+
+        RELATIONSHIPS=$(docker exec $f bin/cypher-shell "MATCH ()-[r]->() RETURN COUNT(r)" | tail -1)
+        echo "$f has $RELATIONSHIPS relationships"
 
         docker rm -f $f
 
-        if [ "$NODES" -lt 1 ]; then
-            echo "$f has $NODES nodes"
-            exit 1
-        fi
-
-        if [ "$RELATIONSHIPS" -lt 1 ]; then
-            echo "$f has $RELATIONSHIPS relationships"
+        if [ "$NODES" -lt 1 ] || [ "$RELATIONSHIPS" -lt 1 ]; then
             exit 1
         fi
 

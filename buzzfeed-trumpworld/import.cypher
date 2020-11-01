@@ -8,7 +8,7 @@ LOAD CSV WITH HEADERS FROM url AS row
 
 WITH terms, row WHERE row.`Entity A Type` = 'Organization' AND row.`Entity B Type` = 'Organization'
 WITH apoc.text.regreplace(toUpper(row.Connection),'\\W+','_') AS type, row, terms
-WITH coalesce(head(filter(term IN terms WHERE type CONTAINS term)), type) AS type, row
+WITH coalesce(head([term IN terms WHERE type CONTAINS term]), type) AS type, row
 
 MERGE (o1:Organization {name:row.`Entity A`})
 MERGE (o2:Organization {name:row.`Entity B`})
@@ -39,7 +39,7 @@ WITH terms, row
 WHERE row.`Entity A Type` = 'Person' AND row.`Entity B Type` = 'Organization'
 
 WITH apoc.text.regreplace(toUpper(row.Connection),'\\W+','_') AS type, row, terms
-WITH coalesce(head(filter(term IN terms WHERE type CONTAINS term)), 'INVOLVED_WITH') AS type, row
+WITH coalesce(head([term IN terms WHERE type CONTAINS term]), 'INVOLVED_WITH') AS type, row
 
 MERGE (p:Person {name:row.`Entity A`})
 MERGE (o:Organization {name:row.`Entity B`})
@@ -56,7 +56,7 @@ LOAD CSV WITH HEADERS FROM url AS row
 WITH terms, row
 WHERE row.`Entity A Type` = 'Organization' AND row.`Entity B Type` = 'Person'
 WITH apoc.text.regreplace(toUpper(row.Connection),'\\W+','_') AS type, row, terms
-WITH coalesce(head(filter(term IN terms WHERE type CONTAINS term)), 'INVOLVED_WITH') AS type, row
+WITH coalesce(head([term IN terms WHERE type CONTAINS term]), 'INVOLVED_WITH') AS type, row
 
 MERGE (o:Organization {name:row.`Entity A`})
 MERGE (p:Person {name:row.`Entity B`})
@@ -74,7 +74,7 @@ WITH terms, row
 WHERE row.`Entity A Type` = 'Person' AND row.`Entity B Type` = 'Person'
 
 WITH apoc.text.regreplace(toUpper(row.Connection),'\\W+','_') AS type, row, terms
-WITH coalesce(head(filter(term IN terms WHERE type CONTAINS term)), type) AS type, row
+WITH coalesce(head([term IN terms WHERE type CONTAINS term]), type) AS type, row
 
 MERGE (p1:Person {name:row.`Entity A`})
 MERGE (p2:Person {name:row.`Entity B`})
@@ -91,7 +91,7 @@ MATCH (p:Person { name : row.name })
 MERGE (o:Organization { name : row.relatedEntityName })
 ON CREATE SET o.source = 'LittleSis'
 WITH p, o, row
-CALL apoc.create.relationship(p,upper(row.reltype), {source:'LittleSis',reldesc : row.reldesc},o) YIELD rel
+CALL apoc.create.relationship(p,toUpper(row.reltype), {source:'LittleSis',reldesc : row.reldesc},o) YIELD rel
 RETURN COUNT(rel);
 
 WITH "https://raw.githubusercontent.com/johnymontana/neo4j-datasets/master/trumpworld/data/littlesis-trump-pers.csv" AS url
@@ -101,7 +101,7 @@ MATCH (p:Person { name : row.name })
 MERGE (o:Person { name : row.relatedEntityName })
 ON CREATE SET o.source = 'LittleSis'
 WITH p, o, row
-CALL apoc.create.relationship(p,upper(row.reltype), {source:'LittleSis',reldesc : row.reldesc},o) YIELD rel
+CALL apoc.create.relationship(p,toUpper(row.reltype), {source:'LittleSis',reldesc : row.reldesc},o) YIELD rel
 RETURN COUNT(rel);
 
 WITH "https://raw.githubusercontent.com/johnymontana/neo4j-datasets/master/trumpworld/data/littlesis-trump-org.csv" AS url
@@ -111,7 +111,7 @@ MATCH (p:Organization { name : row.name })
 MERGE (o:Person { name : row.relatedEntityName })
 ON CREATE SET o.source = 'LittleSis'
 WITH p, o, row
-CALL apoc.create.relationship(p,upper(row.reltype), {source:'LittleSis',reldesc : row.reldesc},o) YIELD rel
+CALL apoc.create.relationship(p,toUpper(row.reltype), {source:'LittleSis',reldesc : row.reldesc},o) YIELD rel
 RETURN COUNT(rel);
 
 WITH "https://raw.githubusercontent.com/johnymontana/neo4j-datasets/master/trumpworld/data/littlesis-trump-org.csv" AS url
@@ -121,7 +121,7 @@ MATCH (p:Organization { name : row.name })
 MERGE (o:Organization { name : row.relatedEntityName })
 ON CREATE SET o.source = 'LittleSis'
 WITH p, o, row
-CALL apoc.create.relationship(p,upper(row.reltype), {source:'LittleSis',reldesc : row.reldesc},o) YIELD rel
+CALL apoc.create.relationship(p,toUpper(row.reltype), {source:'LittleSis',reldesc : row.reldesc},o) YIELD rel
 RETURN COUNT(rel);
 
 // Key Administration Positions

@@ -11,8 +11,8 @@ MERGE (group:Group { id:row.id })
 ON CREATE SET
   group.name = row.name,
   group.urlname = row.urlname,
-  group.rating = toInt(row.rating),
-  group.created = toInt(row.created);
+  group.rating = toInteger(row.rating),
+  group.created = toInteger(row.created);
 
 LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/johnymontana/harvard-bar/master/data/groups_topics.csv"  AS row
 MERGE (topic:Topic {id: row.id})
@@ -40,7 +40,7 @@ WITH row WHERE NOT row.joined is null
 MATCH (member:Member {id: row.id})
 MATCH (group:Group {id: row.groupId})
 MERGE (member)-[membership:MEMBER_OF]->(group)
-ON CREATE SET membership.joined=toInt(row.joined);
+ON CREATE SET membership.joined=toInteger(row.joined);
 
 CREATE INDEX ON :Member(name);
 
@@ -53,8 +53,8 @@ LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/johnymontana/harva
 MERGE (event:Event {id: row.id})
 ON CREATE SET event.name = row.name,
               event.description = row.description,
-              event.time = toInt(row.time),
-              event.utcOffset = toInt(row.utc_offset);
+              event.time = toInteger(row.time),
+              event.utcOffset = toInteger(row.utc_offset);
 
 USING PERIODIC COMMIT 10000
 LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/johnymontana/harvard-bar/master/data/events.csv" AS row
@@ -71,9 +71,9 @@ WITH row WHERE row.response = "yes"
 MATCH (member:Member {id: row.member_id})
 MATCH (event:Event {id: row.event_id})
 MERGE (member)-[rsvp:RSVPD {id: row.rsvp_id}]->(event)
-ON CREATE SET rsvp.created = toint(row.created),
-              rsvp.lastModified = toint(row.mtime),
-              rsvp.guests = toint(row.guests);
+ON CREATE SET rsvp.created = toInteger(row.created),
+              rsvp.lastModified = toInteger(row.mtime),
+              rsvp.guests = toInteger(row.guests);
 
 // Extracting keywords from event descriptions
 CREATE CONSTRAINT ON (k:Keyword) ASSERT k.name IS UNIQUE;

@@ -2,7 +2,7 @@ LOAD CSV WITH HEADERS FROM
 "https://raw.githubusercontent.com/geoiq/acetate/master/places/Europe-z4-z6.txt"
 as row FIELDTERMINATOR "\t"
 MERGE (city:City{name: row.name})
-ON CREATE SET city.population = toINT(row.population)
+ON CREATE SET city.population = toInteger(row.population)
 MERGE (country:Country{code: row.`country code`})
 MERGE (city)-[:IS_IN]->(country);
 
