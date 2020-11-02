@@ -70,6 +70,13 @@
             "metadata": {
                 "description": "Flag if Cosmos DB should be created and neo-to-cosmos started. String datatype is used otherwise validation in 'Deploy to Azure' UI fails."
             }
+        },
+        "cosmosDbPartitionKey": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Cosmos DB Container's partition key"
+            }
         }
     },
     "variables": {
@@ -143,11 +150,14 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "cosmosDbCollection": {
+                    "cosmosDbContainer": {
                         "value": "[variables('graphDbName')]"
                     },
-                    "neo4jBolt": {
-                        "value": "[concat('bolt://', reference(variables('containerId')).ipAddress.ip, ':7687')]"
+                    "cosmosDbPartitionKey": {
+                        "value": "[parameters('cosmosDbPartitionKey')]"
+                    },
+                    "neo4jEndpoint": {
+                        "value": "[concat('neo4j://', reference(variables('containerId')).ipAddress.ip, ':7687')]"
                     },
                     "neo4jPassword": {
                         "value": "[parameters('neo4jPassword')]"
