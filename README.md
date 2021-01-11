@@ -16,11 +16,11 @@ az group deployment create -g neo4j-game-of-thrones \
         cosmosDbPartitionKey=name
 ```
 
-Based on [official performance tuning guidelines](https://neo4j.com/developer/guide-performance-tuning/), Neo4j server is configured with the following value for `dbms.memory.pagecache.size` and `dbms.memory.heap.maxSize`
+Based on [official performance tuning guidelines](https://neo4j.com/developer/guide-performance-tuning/), Neo4j server is configured with the following value for `dbms.memory.pagecache.size`, `dbms.memory.heap.initial_size` and `dbms.memory.heap.max_size`
 > `(CONTAINER_MEMORY_IN_GB - 1GB) / 2` (1GB reserved for other activities on server) i.e for a 7GB container, page cache size and heap size will have 3GB each.
 
 ## Browse data
-Once deployment is completed, proceed to the newly created `Container group` and select `Overview` to get Public IP. Launch web browser at `https://<PUBLIC_IP>:7473` (ignore certificate warnings). Login with credentials `neo4j/<NEO4J_PASSWORD>`
+Once deployment is completed, proceed to the newly created `Container group` and select `Overview` to get Public IP. Launch web browser at `http://<PUBLIC_IP>:7474` (ignore certificate warnings). Login with credentials `neo4j/<NEO4J_PASSWORD>`
 
 ## Migrate to Azure Cosmos DB
 The template also allows you to optionally migrate data to Cosmos DB using [neo-to-cosmos](https://github.com/syedhassaanahmed/neo-to-cosmos) tool. 

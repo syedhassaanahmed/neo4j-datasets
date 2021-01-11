@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2018-05-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "image": {
@@ -57,9 +57,9 @@
         },
         "memoryInGb": {
             "type": "int",
-            "defaultValue": 14,
+            "defaultValue": 16,
             "minValue": 2,
-            "maxValue": 14,
+            "maxValue": 16,
             "metadata": {
                 "description": "Memory size in GB"
             }
@@ -82,13 +82,13 @@
     "variables": {
         "containerId": "[resourceId('Microsoft.ContainerInstance/containerGroups', variables('graphDbName'))]",
         "graphDbName": "[split(last(split(parameters('image'), '/')), ':')[0]]",
-        "neo4jMemoryInMb": "[mul(sub(parameters('memoryInGb'), 1), 512)]",
+        "neo4jMemoryInMb": "[concat(mul(sub(parameters('memoryInGb'), 1), 500), 'M')]",
         "neo4jPorts": [
             {
-                "port": 7473
+                "port": "7474"
             },
             {
-                "port": 7687
+                "port": "7687"
             }
         ]
     },
@@ -96,7 +96,7 @@
         {
             "name": "[variables('graphDbName')]",
             "type": "Microsoft.ContainerInstance/containerGroups",
-            "apiVersion": "2018-10-01",
+            "apiVersion": "2019-12-01",
             "location": "[resourceGroup().location]",
             "properties": {
                 "containers": [
@@ -117,10 +117,14 @@
                                 },
                                 {
                                     "name": "NEO4J_dbms_memory_pagecache_size",
-                                    "value": "[concat(variables('neo4jMemoryInMb'), 'M')]"
+                                    "value": "[variables('neo4jMemoryInMb')]"
                                 },
                                 {
-                                    "name": "NEO4J_dbms_memory_heap_maxSize",
+                                    "name": "NEO4J_dbms_memory_heap_initial__size",
+                                    "value": "[variables('neo4jMemoryInMb')]"
+                                },
+                                {
+                                    "name": "NEO4J_dbms_memory_heap_max__size",
                                     "value": "[variables('neo4jMemoryInMb')]"
                                 }
                             ],
@@ -138,7 +142,7 @@
         {
             "name": "neo-to-cosmos",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2018-09-01",
+            "apiVersion": "2020-06-01",
             "condition": "[equals(bool(parameters('migrateToCosmosDb')), bool('true'))]",
             "dependsOn": [
                 "[variables('containerId')]"
