@@ -27,9 +27,7 @@ for f in *; do
         echo "$f has $RELATIONSHIPS relationships"
 
         docker rm -f $f
-
-        # Remove dangling images to save space on the build agent
-        docker rmi -f $(docker images -f "dangling=true" -q)
+        docker builder prune -f
 
         if [ "$NODES" -lt 1 ] || [ "$RELATIONSHIPS" -lt 1 ]; then
             exit 1
